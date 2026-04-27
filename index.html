@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rinne — Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E9C97C;
+    --bg: #0D0D0D;
+    --bg2: #161616;
+    --bg3: #1E1A14;
+    --text: #E8E0D0;
+    --text-muted: #8A8070;
+    --border: rgba(201,168,76,0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', 'Noto Serif JP', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .lang-toggle { display: flex; border: 1px solid var(--border); overflow: hidden; }
+  .lang-toggle button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.3rem 0.75rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-toggle button.active { background: var(--gold); color: #0D0D0D; }
+  .lang-toggle button:hover:not(.active) { color: var(--gold-light); }
+
+  [data-lang] { display: none; }
+  body.lang-en [data-lang="en"] { display: block; }
+  body.lang-ja [data-lang="ja"] { display: block; }
+  span[data-lang] { display: none; }
+  body.lang-en span[data-lang="en"] { display: inline; }
+  body.lang-ja span[data-lang="ja"] { display: inline; }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.08);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.05);
+    pointer-events: none;
+  }
+  .hero-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+    animation: fadeIn 1.2s ease both;
+  }
+  .hero-title {
+    font-size: 4.5rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    animation: fadeIn 1.2s ease 0.2s both;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    max-width: 480px;
+    font-style: italic;
+    animation: fadeIn 1.2s ease 0.4s both;
+  }
+  .hero-badge { margin-top: 3rem; animation: fadeIn 1.2s ease 0.6s both; }
+  .hero-badge a {
+    display: inline-block;
+    background: var(--gold);
+    color: #0D0D0D;
+    text-decoration: none;
+    padding: 0.75rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    transition: background 0.3s;
+  }
+  .hero-badge a:hover { background: var(--gold-light); }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  section { max-width: 760px; margin: 0 auto; padding: 6rem 2rem; }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+  p { color: var(--text-muted); margin-bottom: 1.2rem; }
+  p strong { color: var(--text); font-weight: 500; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+  .feature { background: var(--bg2); border: 1px solid var(--border); padding: 2rem; }
+  .feature-icon { font-family: 'Noto Serif JP', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 0.8rem; }
+  .feature h3 { font-size: 1rem; letter-spacing: 0.1em; color: var(--text); margin-bottom: 0.5rem; font-weight: 500; }
+  .feature p { font-size: 0.9rem; margin: 0; }
+  .steps { margin-top: 2rem; }
+  .step { display: flex; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .step:last-child { border-bottom: none; }
+  .step-number {
+    flex-shrink: 0;
+    width: 2.5rem; height: 2.5rem;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    color: var(--gold);
+  }
+  .step-content h3 { font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; font-weight: 500; letter-spacing: 0.08em; }
+  .step-content p { font-size: 0.9rem; margin: 0; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  label { font-size: 0.8rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+  input, textarea, select {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.85rem 1rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  input:focus, textarea:focus { border-color: var(--gold); }
+  textarea { min-height: 160px; resize: vertical; }
+  button[type="submit"] {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 1rem 2.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: flex-start;
+  }
+  button[type="submit"]:hover { background: var(--gold); color: #0D0D0D; }
+  .form-note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 0.5rem; }
+  .success-msg {
+    display: none;
+    background: var(--bg3);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    margin-top: 1rem;
+  }
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 2.5rem; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.1em; }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { color: var(--gold-light); }
+  .divider { border: none; border-top: 1px solid var(--border); max-width: 760px; margin: 0 auto; }
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.2rem; flex-wrap: wrap; gap: 0.8rem; }
+    .nav-links { display: none; }
+    .hero-kanji { font-size: 2.5rem; }
+    .hero-title { font-size: 3rem; }
+    .features { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    button[type="submit"] { align-self: stretch; text-align: center; }
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<nav>
+  <a class="nav-brand" href="#">輪廻 Rinne</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about" id="nav-about">About</a>
+      <a href="#howto" id="nav-howto">How to Use</a>
+      <a href="#contact" id="nav-contact">Contact</a>
+      <a href="privacy.html" id="nav-privacy">Privacy</a>
+    </div>
+    <div class="lang-toggle">
+      <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnJa" onclick="setLang('ja')">日本語</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-kanji">輪 廻</div>
+  <div class="hero-title">Rinne</div>
+  <div class="hero-subtitle">
+    <span data-lang="en">A sutra recitation companion for the Lotus Sutra</span>
+    <span data-lang="ja">法華経・自我偈の読経サポートアプリ</span>
+  </div>
+  <div class="hero-badge">
+    <a href="#">
+      <span data-lang="en">Download on the App Store</span>
+      <span data-lang="ja">App Store でダウンロード</span>
+    </a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<section id="about">
+  <div class="section-label">About</div>
+  <div data-lang="en">
+    <h2>What is Rinne?</h2>
+    <p><strong>Rinne</strong> is a sutra recitation app centered on the <em>Jigage</em> — the verse section of the 16th chapter of the Lotus Sutra (<em>Myōhō Renge Kyō</em>).</p>
+    <p>Characters from the sutra float in four concentric rings, animated gently by your device's gyroscope. Tap each character in order to practice recitation, or activate Auto Tap for a guided experience. Romanized readings appear on the outer ring.</p>
+  </div>
+  <div data-lang="ja">
+    <h2>Rinne とは</h2>
+    <p><strong>Rinne</strong> は、妙法蓮華経如来寿量品第十六（自我偈）を題材にした読経サポートアプリです。</p>
+    <p>お経の文字が4重の輪となって画面上に浮かび、デバイスのジャイロスコープに合わせてゆっくりと揺れます。外側の輪の文字を順番にタップして読経の練習ができるほか、自動タップ機能でガイドに合わせて唱えることもできます。外側の輪にはヘボン式ローマ字のルビが表示されます。</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">輪</div>
+      <h3><span data-lang="en">Four rotating rings</span><span data-lang="ja">4重の輪</span></h3>
+      <p><span data-lang="en">Characters are arranged across four concentric rings, guiding your recitation through the full verse.</span><span data-lang="ja">文字が4重の同心円状に配置され、偈文全体を通して読経をガイドします。</span></p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">読</div>
+      <h3><span data-lang="en">Romanized readings</span><span data-lang="ja">ローマ字ルビ</span></h3>
+      <p><span data-lang="en">Hepburn romanization with macron long vowels on the outer ring.</span><span data-lang="ja">外側の輪にヘボン式ローマ字（マクロン長音）のルビを表示します。</span></p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">禅</div>
+      <h3><span data-lang="en">Gyroscope depth</span><span data-lang="ja">ジャイロスコープ</span></h3>
+      <p><span data-lang="en">Tilt your device to sense the floating depth of the characters. Double-tap center to reset.</span><span data-lang="ja">デバイスを傾けると文字が空間に浮いているような奥行きを感じられます。中央ダブルタップでリセット。</span></p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">時</div>
+      <h3><span data-lang="en">Auto Off Timer</span><span data-lang="ja">自動終了タイマー</span></h3>
+      <p><span data-lang="en">Set a session timer (1–30 min). Auto Tap stops automatically when time is up.</span><span data-lang="ja">1〜30分のタイマーを設定できます。時間になると自動タップが停止します。</span></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="howto">
+  <div class="section-label">How to Use</div>
+  <div data-lang="en">
+    <h2>Getting Started</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">01</div><div class="step-content"><h3>Manual mode</h3><p>Tap characters on the outer ring in order. The first tap activates manual mode. After 5 seconds without a tap, the next correct character is highlighted in red.</p></div></div>
+      <div class="step"><div class="step-number">02</div><div class="step-content"><h3>Auto Tap mode</h3><p>Press the Auto Tap button (bottom left) to advance through the text automatically.</p></div></div>
+      <div class="step"><div class="step-number">03</div><div class="step-content"><h3>Set a session timer</h3><p>Tap <strong>AUTO OFF TIMER</strong> in the center of the bottom bar to choose a session length.</p></div></div>
+      <div class="step"><div class="step-number">04</div><div class="step-content"><h3>Reset & return</h3><p>Tap the stack icon (top right) to return to the beginning. Double-tap the center to reset the gyroscope tilt.</p></div></div>
+      <div class="step"><div class="step-number">05</div><div class="step-content"><h3>Change the background</h3><p>Press the background button (bottom right) to cycle through background styles.</p></div></div>
+    </div>
+  </div>
+  <div data-lang="ja">
+    <h2>使い方</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">01</div><div class="step-content"><h3>手動モード</h3><p>外側の輪の文字を正しい順番でタップします。最初のタップで手動モードが起動します。5秒間タップがないと、次にタップすべき文字が朱色でハイライトされます。</p></div></div>
+      <div class="step"><div class="step-number">02</div><div class="step-content"><h3>自動タップモード</h3><p>画面左下の自動タップボタンを押すと、一定のペースで自動的に文字が進みます。</p></div></div>
+      <div class="step"><div class="step-number">03</div><div class="step-content"><h3>タイマーの設定</h3><p>下部バー中央の <strong>AUTO OFF TIMER</strong> をタップして、セッションの長さを選びます。</p></div></div>
+      <div class="step"><div class="step-number">04</div><div class="step-content"><h3>リセット・最初に戻る</h3><p>履歴表示の右端のアイコンをタップすると最初から始められます。画面中央をダブルタップするとジャイロの傾きがリセットされます。</p></div></div>
+      <div class="step"><div class="step-number">05</div><div class="step-content"><h3>背景の変更</h3><p>右下の背景ボタンを押すと、背景のスタイルを切り替えられます。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div data-lang="en"><h2>Support & Feedback</h2><p>For questions, bug reports, or feedback, please use the form below.</p></div>
+  <div data-lang="ja"><h2>お問い合わせ</h2><p>ご質問・不具合のご報告・ご意見はこちらのフォームよりお送りください。</p></div>
+
+  <form action="https://formspree.io/f/mojyznrb" method="POST" id="contactForm">
+    <div class="form-group">
+      <label><span data-lang="en">Name</span><span data-lang="ja">お名前</span></label>
+      <input type="text" name="name" required>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label><span data-lang="en">Subject</span><span data-lang="ja">件名</span></label>
+      <select name="subject" id="subjectSelect">
+        <option data-en="Bug report" data-ja="不具合の報告">Bug report</option>
+        <option data-en="Feature request" data-ja="機能のご要望">Feature request</option>
+        <option data-en="General question" data-ja="一般的なご質問">General question</option>
+        <option data-en="Other" data-ja="その他">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label><span data-lang="en">Message</span><span data-lang="ja">メッセージ</span></label>
+      <textarea name="message" required></textarea>
+    </div>
+    <button type="submit">
+      <span data-lang="en">Send Message</span><span data-lang="ja">送信する</span>
+    </button>
+    <p class="form-note">
+      <span data-lang="en">Your information will only be used to respond to your inquiry.</span>
+      <span data-lang="ja">ご入力いただいた情報はお問い合わせへの返答のみに使用します。</span>
+    </p>
+  </form>
+  <div class="success-msg" id="successMsg">
+    <span data-lang="en">Thank you. Your message has been received.</span>
+    <span data-lang="ja">送信が完了しました。内容を確認の上、折り返しご連絡いたします。</span>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Koryu Sugizaki / OFFICE ES LLC &nbsp;·&nbsp;
+    <a href="privacy.html"><span data-lang="en">Privacy Policy</span><span data-lang="ja">プライバシーポリシー</span></a>
+  </p>
+</footer>
+
+<script>
+  const navLabels = {
+    en: { about:'About', howto:'How to Use', contact:'Contact', privacy:'Privacy' },
+    ja: { about:'アプリについて', howto:'使い方', contact:'お問い合わせ', privacy:'プライバシー' }
+  };
+
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+    document.getElementById('btnJa').classList.toggle('active', lang === 'ja');
+    document.getElementById('nav-about').textContent = navLabels[lang].about;
+    document.getElementById('nav-howto').textContent = navLabels[lang].howto;
+    document.getElementById('nav-contact').textContent = navLabels[lang].contact;
+    document.getElementById('nav-privacy').textContent = navLabels[lang].privacy;
+    document.querySelectorAll('#subjectSelect option').forEach(o => {
+      o.textContent = o.getAttribute('data-' + lang);
+      o.value = o.getAttribute('data-' + lang);
+    });
+    document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+    localStorage.setItem('rinne-lang', lang);
+  }
+
+  const saved = localStorage.getItem('rinne-lang');
+  if (saved) setLang(saved);
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const res = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{'Accept':'application/json'} });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      }
+    } catch(err) { alert('An error occurred. Please try again.'); }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Rinne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E9C97C;
+    --bg: #0D0D0D;
+    --bg2: #161616;
+    --text: #E8E0D0;
+    --text-muted: #8A8070;
+    --border: rgba(201,168,76,0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', 'Noto Serif JP', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-size: 1.1rem; letter-spacing: 0.15em; color: var(--gold-light); text-decoration: none; }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.1em; transition: color 0.3s; }
+  .nav-back:hover { color: var(--gold-light); }
+  .lang-toggle { display: flex; border: 1px solid var(--border); overflow: hidden; }
+  .lang-toggle button {
+    background: transparent; border: none; color: var(--text-muted);
+    padding: 0.3rem 0.75rem; font-family: inherit; font-size: 0.8rem;
+    letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s;
+  }
+  .lang-toggle button.active { background: var(--gold); color: #0D0D0D; }
+  .lang-toggle button:hover:not(.active) { color: var(--gold-light); }
+
+  [data-lang] { display: none; }
+  body.lang-en [data-lang="en"] { display: block; }
+  body.lang-ja [data-lang="ja"] { display: block; }
+  span[data-lang] { display: none; }
+  body.lang-en span[data-lang="en"] { display: inline; }
+  body.lang-ja span[data-lang="ja"] { display: inline; }
+
+  .page-header { padding: 10rem 2rem 4rem; max-width: 760px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .page-header h1 { font-size: 2.8rem; font-weight: 400; letter-spacing: 0.08em; color: var(--text); margin-bottom: 1rem; }
+  .page-header .updated { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+  main { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+  .policy-section { margin-bottom: 3.5rem; }
+  h2 { font-size: 1.3rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gold-light); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  p { color: var(--text-muted); margin-bottom: 1rem; }
+  p strong { color: var(--text); font-weight: 500; }
+  ul { list-style: none; margin: 0.5rem 0 1rem 0; }
+  ul li { color: var(--text-muted); padding: 0.3rem 0 0.3rem 1.5rem; position: relative; font-size: 0.95rem; }
+  ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--gold-light); }
+  .contact-box { background: var(--bg2); border: 1px solid var(--border); padding: 2rem; margin-top: 1.5rem; }
+  .contact-box p { margin: 0; }
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 2.5rem; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.1em; }
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.2rem; flex-wrap: wrap; gap: 0.8rem; }
+    .page-header { padding: 8rem 1.5rem 3rem; }
+    .page-header h1 { font-size: 2rem; }
+    main { padding: 3rem 1.5rem 4rem; }
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<nav>
+  <a class="nav-brand" href="index.html">輪廻 Rinne</a>
+  <div class="nav-right">
+    <a class="nav-back" href="index.html" id="nav-back">← Back to Support</a>
+    <div class="lang-toggle">
+      <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnJa" onclick="setLang('ja')">日本語</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="section-label">Legal</div>
+  <h1><span data-lang="en">Privacy Policy</span><span data-lang="ja">プライバシーポリシー</span></h1>
+  <p class="updated"><span data-lang="en">Last updated: April 27, 2026</span><span data-lang="ja">最終更新日：2026年4月27日</span></p>
+</div>
+
+<main>
+
+  <!-- Section 1 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>1. Overview</h2>
+      <p>This Privacy Policy describes how Koryu Sugizaki / OFFICE ES LLC ("we," "us," or "our") handles information in connection with the <strong>Rinne</strong> iOS application ("the App").</p>
+      <p><strong>Rinne does not collect, store, or transmit any personal data from users.</strong> The App functions entirely on your device.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>1. 概要</h2>
+      <p>本プライバシーポリシーは、Koryu Sugizaki / OFFICE ES LLC（以下「当社」）が、iOSアプリケーション <strong>Rinne</strong>（以下「本アプリ」）に関連して情報をどのように取り扱うかを説明するものです。</p>
+      <p><strong>本アプリは、ユーザーの個人情報を一切収集・保存・送信しません。</strong>アプリはすべてお使いのデバイス上で動作します。</p>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>2. Information We Do Not Collect</h2>
+      <p>The App does not collect any of the following:</p>
+      <ul>
+        <li>Personal identification information (name, email, phone number, etc.)</li>
+        <li>Device identifiers or advertising IDs</li>
+        <li>Location data</li>
+        <li>Usage analytics or behavioral data</li>
+        <li>Crash reports or diagnostic data transmitted to our servers</li>
+      </ul>
+    </div>
+    <div data-lang="ja">
+      <h2>2. 収集しない情報</h2>
+      <p>本アプリは以下の情報を一切収集しません。</p>
+      <ul>
+        <li>氏名・メールアドレス・電話番号などの個人識別情報</li>
+        <li>デバイス識別子・広告ID</li>
+        <li>位置情報</li>
+        <li>利用状況・行動データ</li>
+        <li>クラッシュレポートや診断データの当社サーバーへの送信</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>3. Device Sensors</h2>
+      <p>The App uses your device's <strong>gyroscope and motion sensors</strong> solely to create the visual effect of floating characters on screen. This sensor data is processed locally on your device in real time and is never stored or transmitted.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>3. デバイスセンサーの使用</h2>
+      <p>本アプリは、文字が画面上に浮遊するような視覚効果を実現するためにのみ、デバイスの<strong>ジャイロスコープおよびモーションセンサー</strong>を使用します。センサーデータはデバイス上でリアルタイムに処理され、保存・送信は一切行われません。</p>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>4. Third-Party Services</h2>
+      <p>The App itself does not integrate any third-party analytics, advertising, or tracking SDKs.</p>
+      <p>This support website uses <strong>Formspree</strong> to process contact form submissions. When you submit the contact form, your name, email address, and message are sent to Formspree for delivery to us. Formspree's privacy practices are governed by their own <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>4. 第三者サービス</h2>
+      <p>本アプリには、サードパーティ製の分析・広告・トラッキングSDKは一切組み込まれていません。</p>
+      <p>本サポートサイトでは、お問い合わせフォームの処理に <strong>Formspree</strong> を利用しています。フォームを送信すると、お名前・メールアドレス・メッセージがFormspree経由で当社に届きます。Formspreeのプライバシーについては、<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Formspreeのプライバシーポリシー</a>をご参照ください。</p>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>5. Apple App Store</h2>
+      <p>The App is distributed through Apple's App Store. Apple may collect certain information in accordance with <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. We do not control or have access to data collected by Apple.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>5. Apple App Store</h2>
+      <p>本アプリはAppleのApp Storeを通じて配信されます。Appleは<a href="https://www.apple.com/legal/privacy/ja/" target="_blank" rel="noopener">Appleのプライバシーポリシー</a>に従い、一部の情報を収集する場合があります。当社はAppleが収集するデータを管理・参照することはできません。</p>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>6. Children's Privacy</h2>
+      <p>The App is suitable for all ages and does not collect any information from any users, including children under the age of 13.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>6. 子どものプライバシー</h2>
+      <p>本アプリはすべての年齢の方にご利用いただけます。13歳未満のお子様を含む、いかなるユーザーの情報も収集しません。</p>
+    </div>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>7. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with a revised "Last updated" date.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>7. ポリシーの変更</h2>
+      <p>本プライバシーポリシーは必要に応じて更新することがあります。変更がある場合は、このページの「最終更新日」を改訂した上で掲載します。</p>
+    </div>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>8. Contact</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us:</p>
+      <div class="contact-box">
+        <p><strong>Koryu Sugizaki / OFFICE ES LLC</strong><br>
+        <a href="index.html#contact">Support contact form</a></p>
+      </div>
+    </div>
+    <div data-lang="ja">
+      <h2>8. お問い合わせ</h2>
+      <p>本プライバシーポリシーに関するご質問は、以下よりお問い合わせください。</p>
+      <div class="contact-box">
+        <p><strong>Koryu Sugizaki / OFFICE ES LLC</strong><br>
+        <a href="index.html#contact">サポートお問い合わせフォーム</a></p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Koryu Sugizaki / OFFICE ES LLC &nbsp;·&nbsp; <a href="index.html"><span data-lang="en">Support Site</span><span data-lang="ja">サポートサイト</span></a></p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+    document.getElementById('btnJa').classList.toggle('active', lang === 'ja');
+    document.getElementById('nav-back').textContent = lang === 'ja' ? '← サポートに戻る' : '← Back to Support';
+    document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+    localStorage.setItem('rinne-lang', lang);
+  }
+  const saved = localStorage.getItem('rinne-lang');
+  if (saved) setLang(saved);
+</script>
+</body>
+</html>
